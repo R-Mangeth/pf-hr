@@ -1,5 +1,9 @@
-html, body.login-page {
-    background-color: #fcf8f2 !important; 
+html, body, .login-page {
+    background-image: url('fundo-posters.jpg') !important;
+    background-repeat: repeat !important;
+    background-size: 550px auto !important;    /* Aumentamos aqui para a imagem aparecer maior e menos espalhada */
+    background-position: top center !important; /* Centralizado no topo para alinhar melhor com a caixa de login */
+    min-height: 100vh;
     font-family: 'Poppins', sans-serif !important;
 }
 
@@ -49,7 +53,7 @@ body.login-page .btn-primary:hover {
 }
 
 .link-custom {
-    color: #8c715c !important; 
+    color: #8c715c !important;
     font-weight: 500 !important;
     text-decoration: none !important;
     transition: all 0.3s ease !important;
@@ -57,6 +61,6 @@ body.login-page .btn-primary:hover {
 }
 
 .link-custom:hover {
-    color: #5c4636 !important; 
+    color: #5c4636 !important;
     text-decoration: underline !important;
 }
