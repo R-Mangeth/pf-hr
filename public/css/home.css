@@ -1,6 +1,6 @@
-html, body, .wrapper {
+html, body, .wrapper, .content-wrapper {
     background-image: none !important;
-    background-color: #f4f6f9 !important; 
+    background-color: #d4d7dd !important; 
 }
 
 .home-card {
