@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('maquiagems', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->string('marca');
+            $table->string('categoria');
+            $table->string('cor');
+            $table->string('preco');
+            $table->string('descricao')->nullable;
+            $table->string('nome')->nullable;
             $table->timestamps();
+            
         });
     }
 
