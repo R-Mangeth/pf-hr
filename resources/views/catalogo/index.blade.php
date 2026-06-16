@@ -1,56 +1,81 @@
 @extends('adminlte::page')
 
-@section('title', 'Painel do Catálogo')
+@section('title', 'Honour')
+
+@section('css')
+<style>
+    .content-wrapper {
+        background-color: #f7f4ef !important; 
+    }
+    .card-custom-rosa {
+        border-top: 3px solid #f3c1c6 !important;
+    }
+    .btn-rosa {
+        background-color: #f3c1c6 !important;
+        border-color: #f3c1c6 !important;
+        color: #4a3b3c !important;
+        font-weight: bold;
+    }
+    .btn-rosa:hover {
+        background-color: #e5b0b5 !important;
+        color: #4a3b3c !important;
+    }
+</style>
+@endsection
 
 @section('content_header')
-    <h1>Nosso Catálogo</h1>
+    <h1>Gerenciar Catálogo</h1>
 @endsection
 
 @section('content')
-    @if(session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
-            {{ session('success') }}
-        </div>
-    @endif
-
-    <div class="card card-outline card-dark">
-        <div class="card-header">
-            <h3 class="card-title">Itens Cadastrados</h3>
-            <div class="card-tools">
-                <a href="#" class="btn btn-success btn-sm">
-                    <i class="fas fa-plus"></i> Novo Registro
-                </a>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-outline card-custom-rosa">
+                <div class="card-header">
+                    <h3 class="card-title">Itens do Catálogo</h3>
+                    <div class="card-tools">
+                        <a href="{{ route('catalogo.create') }}" class="btn btn-rosa">
+                            <i class="fas fa-plus"></i> Novo Registro
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-hover text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome do Produto</th>
+                                <th>Categoria</th>
+                                <th>Preço</th>
+                                <th width="150px">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Batom Matte Velvet</td>
+                                <td>Labiais</td>
+                                <td>R$ 49,90</td>
+                                <td>
+                                    <a href="{{ route('catalogo.edit', 1) }}" class="btn btn-sm btn-warning">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <form action="{{ route('catalogo.destroy', 1) }}" method="POST" style="display: inline-block;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja apagar este item?')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-        
-        <div class="card-body p-0">
-            <table class="table table-striped table-hover align-middle mb-0">
-                <thead>
-                    <tr>
-                        <th style="width: 90px;">Imagem</th>
-                        <th>Nome / Título</th>
-                        <th>Especificações</th>
-                        <th style="width: 150px;">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{-- O loop do banco de dados vai entrar aqui --}}
-                    <tr>
-                        <td>
-                            <img src="https://via.placeholder.com/50" class="img-thumbnail rounded" style="width: 50px; height: 50px; object-fit: cover;">
-                        </td>
-                        <td><strong>Item de Exemplo</strong></td>
-                        <td><span class="badge bg-primary">Geral</span></td>
-                        <td>
-                            <div class="btn-group btn-group-sm">
-                                <a href="#" class="btn btn-warning" title="Editar"><i class="fas fa-edit"></i></a>
-                                <button class="btn btn-danger" title="Excluir"><i class="fas fa-trash"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
     </div>
+</div>
 @endsection
