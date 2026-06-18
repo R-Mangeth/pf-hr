@@ -1,8 +1,8 @@
 html, body, .login-page {
     background-image: url('fundo-posters.jpg') !important;
     background-repeat: repeat !important;
-    background-size: 550px auto !important;    /* Aumentamos aqui para a imagem aparecer maior e menos espalhada */
-    background-position: top center !important; /* Centralizado no topo para alinhar melhor com a caixa de login */
+    background-size: 550px auto !important;    /
+    background-position: top center !important; /
     min-height: 100vh;
     font-family: 'Poppins', sans-serif !important;
 }
