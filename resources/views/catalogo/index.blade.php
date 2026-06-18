@@ -53,24 +53,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Batom Matte Velvet</td>
-                                <td>Labiais</td>
-                                <td>R$ 49,90</td>
-                                <td>
-                                    <a href="{{ route('catalogo.edit', 1) }}" class="btn btn-sm btn-warning">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <form action="{{ route('catalogo.destroy', 1) }}" method="POST" style="display: inline-block;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja apagar este item?')">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
+                            @forelse ($itens as $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->nome }}</td>
+                                    <td>{{ $item->categoria }}</td>
+                                    <td>R$ {{ number_format((float) $item->preco, 2, ',', '.') }}</td>
+                                    <td>
+                                        <a href="{{ route('catalogo.edit', $item->id) }}" class="btn btn-sm btn-warning">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+
+                                        <form action="{{ route('catalogo.destroy', $item->id) }}" method="POST" style="display: inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja apagar este item?')">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="text-center text-muted py-4">Nenhum item cadastrado.</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

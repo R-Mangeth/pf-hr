@@ -19,30 +19,30 @@
             <h3 class="card-title">Modifique os dados necessários</h3>
         </div>
         
-        <form action="#" method="POST" enctype="multipart/form-data">
+<form action="{{ route('catalogo.update', $id->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            
+
             <div class="card-body">
-                
+
                 <div class="form-group mb-3">
                     <label for="nome">Nome / Título</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-font"></i></span>
-                        </div>
-                        <input type="text" name="nome" id="nome" class="form-control @error('nome') is-invalid @enderror" value="{{ old('nome', 'Item Atual') }}">
+                </div>
+                 <input type="text" name="nome" id="nome" class="form-control @error('nome') is-invalid @enderror" value="{{ old('nome', 'Item Atual') }}">
                         
                         @error('nome')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                        @enderror
-                    </div>
+                    @enderror
                 </div>
+            </div>
 
                 <div class="form-group mb-3">
-                    <label for="especificacao">Especificação / Categoria</label>
+                      <label for="especificacao">Especificação / Categoria</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-tag"></i></span>
@@ -50,36 +50,31 @@
                         <input type="text" name="especificacao" id="especificacao" class="form-control @error('especificacao') is-invalid @enderror" value="{{ old('especificacao', 'Categoria Atual') }}">
                         
                         @error('especificacao')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                    @enderror
                 </div>
 
                 <div class="form-group mb-3">
                     <label for="imagem">Substituir Imagem Ilustrativa</label>
-                    
+
                     <div class="row align-items-center mb-2">
                         <div class="col-auto">
                             <span class="text-muted d-block small mb-1">Imagem Atual:</span>
-                            <img src="https://via.placeholder.com/80" class="img-thumbnail rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                            
+                                <img src="https://via.placeholder.com/80" class="img-thumbnail rounded" style="width: 80px; height: 80px; object-fit: cover;" alt="Sem imagem">
                         </div>
-                        
+
                         <div class="col">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-upload"></i></span>
                                 </div>
                                 <input type="file" name="imagem" id="imagem" class="form-control @error('imagem') is-invalid @enderror">
-                                
                                 @error('imagem')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                               @enderror
                             </div>
-                            <small class="form-text text-muted">.</small>
+                            <small class="form-text text-muted">Envie uma imagem para atualizar.</small>
                         </div>
                     </div>
                 </div>
@@ -90,10 +85,5 @@
                 <button type="submit" class="btn btn-warning">
                     <i class="fas fa-sync-alt"></i> Atualizar Registro
                 </button>
-                <a href="#" class="btn btn-default">
-                    Cancelar
-                </a>
+                <a href="{{ route('catalogo.index') }}" class="btn btn-default">Cancelar</a>
             </div>
-        </form>
-    </div>
-@endsection
