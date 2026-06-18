@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('cor');
             $table->string('preco');
             $table->string('descricao')->nullable;
-            $table->string('nome')->nullable;
             $table->timestamps();
             
         });
