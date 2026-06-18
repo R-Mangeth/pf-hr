@@ -21,11 +21,12 @@ class CatalogoController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit(Maquiagem $catalogo)
     {
-        $catalogo = Maquiagem::findOrFail($id);
-        return view('catalogo.edit', compact('catalogo'));
+        return view('catalogo.edit', ['catalogo' => $catalogo]);
     }
+
+
 
 
     public function store(StoreMaquiagemRequest $request)
@@ -49,7 +50,33 @@ class CatalogoController extends Controller
 
     public function show($id){}
 
-    public function update(Request $request, $id) {}
+    public function update(Request $request, Maquiagem $catalogo)
+    {
+        // validações simples (sem FormRequest para não reestruturar tudo agora)
+        $validated = $request->validate([
+            'nome' => 'required|string|max:255',
+            'especificacao' => 'required|string|max:100',
+            'imagem' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
 
-    public function destroy($id){}
+        $catalogo->nome = $validated['nome'];
+        // seu Blade usa "especificacao" para categoria
+        $catalogo->categoria = $validated['especificacao'];
+
+        if ($request->hasFile('imagem')) {
+            $path = $request->file('imagem')->store('maquiagens', 'public');
+            $catalogo->imagem = $path;
+        }
+
+        $catalogo->save();
+
+        return redirect()->route('catalogo.index')->with('success', 'Registro atualizado com sucesso!');
+    }
+
+    public function destroy(Maquiagem $catalogo)
+    {
+        $catalogo->delete();
+        return redirect()->route('catalogo.index')->with('success', 'Registro removido com sucesso!');
+    }
 }
+
