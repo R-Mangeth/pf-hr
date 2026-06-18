@@ -1,88 +1,52 @@
 @extends('adminlte::page')
 
-@section('title', 'Novo Cadastro')
+@section('title', 'Cadastrar Maquiagem')
 
 @section('content_header')
-    <h1>Cadastrar Novo Item</h1>
-@endsection
+    <h1>Cadastrar Nova Maquiagem</h1>
+@stop
 
 @section('content')
-    @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <h5><i class="icon fas fa-ban"></i> Atenção!</h5>
-            Por favor, corrija os erros no formulário abaixo.
-        </div>
-    @endif
-
-    <div class="card card-outline card-success">
+    <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Preencha os dados do registro</h3>
+            <h3 class="card-title">Preencha os dados do produto</h3>
         </div>
-        
-        <form action="#" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('catalogo.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            
             <div class="card-body">
-                
-                <div class="form-group mb-3">
-                    <label for="nome">Nome / Título</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-font"></i></span>
-                        </div>
-                        <input type="text" name="nome" id="nome" class="form-control @error('nome') is-invalid @enderror" value="{{ old('nome') }}" placeholder="Ex: Nome do item...">
-                        
-                        @error('nome')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" name="nome" class="form-control" value="{{ old('nome') }}" required>
                 </div>
-
-                <div class="form-group mb-3">
-                    <label for="especificacao">Especificação / Categoria</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-tag"></i></span>
-                        </div>
-                        <input type="text" name="especificacao" id="especificacao" class="form-control @error('especificacao') is-invalid @enderror" value="{{ old('especificacao') }}" placeholder="Ex: Categoria ou detalhe...">
-                        
-                        @error('especificacao')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+                <div class="form-group">
+                    <label>Marca</label>
+                    <input type="text" name="marca" class="form-control" value="{{ old('marca') }}" required>
                 </div>
-
-                <div class="form-group mb-3">
-                    <label for="imagem">Imagem Ilustrativa</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-image"></i></span>
-                        </div>
-                        <input type="file" name="imagem" id="imagem" class="form-control @error('imagem') is-invalid @enderror">
-                        
-                        @error('imagem')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <small class="form-text text-muted">Formatos permitidos: JPG, JPEG, PNG. Tamanho máximo: 2MB.</small>
+                <div class="form-group">
+                    <label>Categoria</label>
+                    <input type="text" name="categoria" class="form-control" value="{{ old('categoria') }}" required>
                 </div>
-
+                <div class="form-group">
+                    <label>Cor</label>
+                    <input type="text" name="cor" class="form-control" value="{{ old('cor') }}" required>
+                </div>
+                <div class="form-group">
+                    <label>Preço</label>
+                    <input type="number" step="0.01" name="preco" class="form-control" value="{{ old('preco') }}" required>
+                </div>
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea name="descricao" class="form-control" required>{{ old('descricao') }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Imagem</label>
+                    <input type="file" name="imagem" class="form-control-file" required>
+                </div>
             </div>
-
-            <div class="card-footer bg-light">
-                <button type="submit" class="btn btn-success">
-                    <i class="fas fa-save"></i> Salvar Registro
-                </button>
-                <a href="#" class="btn btn-default">
-                    Cancelar
-                </a>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Salvar Cadastro</button>
+                <a href="{{ route('catalogo.index') }}" class="btn btn-danger">Cancelar</a>
             </div>
         </form>
     </div>
-@endsection
+@stop
