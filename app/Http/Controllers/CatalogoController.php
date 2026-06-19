@@ -11,9 +11,10 @@ class CatalogoController extends Controller
 {
     public function index()
     {
-        $itens = Maquiagem::query()->orderByDesc('id')->get();
+        $itens = Maquiagem::query()->orderByDesc('id')->paginate(5);
         return view('catalogo.index', compact('itens'));
     }
+
 
     public function create()
     {

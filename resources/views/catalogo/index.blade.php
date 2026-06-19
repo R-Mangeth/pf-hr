@@ -4,8 +4,9 @@
 
 @section('css')
 <style>
+
     .content-wrapper {
-        background-color: #f7f4ef !important; 
+        background-color: #f7f4ef !important;
     }
     .card-custom-rosa {
         border-top: 3px solid #f3c1c6 !important;
@@ -40,7 +41,7 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <div class="card-body table-responsive p-0">
                     <table class="table table-hover text-nowrap">
                         <thead>
@@ -81,6 +82,15 @@
                         </tbody>
                     </table>
                 </div>
+
+                @if ($itens->hasPages())
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-center">
+                            {{ $itens->onEachSide(1)->links() }}
+                        </div>
+                    </div>
+                @endif
+
             </div>
         </div>
     </div>
