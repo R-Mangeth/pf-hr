@@ -23,6 +23,11 @@
                     <h3 style="font-size: 24px; font-weight: bold; color: #4a3b32; margin-bottom: 10px;"> Olá!</h3>
                     <p style="font-size: 16px; margin-bottom: 30px; color: #9c8270;">{{ __('Você foi logado(a) com sucesso no sistema.') }}</p>
 
+                    
+                    <p class="mb-1 mt-3 text-center">
+                        <a href="{{ route('catalogo.index') }}" class="link-custom">ir para o catálogo</a>
+                    </p>
+
                     <a href="{{ route('logout') }}" 
                        class="btn btn-logout" 
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
