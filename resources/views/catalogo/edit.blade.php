@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.catalogo')
 
 @section('title', 'Editar Registro')
 

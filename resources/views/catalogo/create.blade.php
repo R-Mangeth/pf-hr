@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.catalogo')
 
 @section('title', 'Cadastrar Maquiagem')
 
@@ -50,3 +50,4 @@
         </form>
     </div>
 @stop
+

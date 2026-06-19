@@ -1,28 +1,6 @@
-@extends('adminlte::page')
+@extends('layouts.catalogo')
 
 @section('title', 'Honour')
-
-@section('css')
-<style>
-
-    .content-wrapper {
-        background-color: #f7f4ef !important;
-    }
-    .card-custom-rosa {
-        border-top: 3px solid #f3c1c6 !important;
-    }
-    .btn-rosa {
-        background-color: #f3c1c6 !important;
-        border-color: #f3c1c6 !important;
-        color: #4a3b3c !important;
-        font-weight: bold;
-    }
-    .btn-rosa:hover {
-        background-color: #e5b0b5 !important;
-        color: #4a3b3c !important;
-    }
-</style>
-@endsection
 
 @section('content_header')
     <h1>Gerenciar Catálogo</h1>

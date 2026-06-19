@@ -1,0 +1,109 @@
+:root{
+    --honour-rosa:      #f3c1c6;
+    --honour-rosa-hover:#e5b0b5;
+    --honour-creme:     #f7f4ef;
+    --honour-marrom:    #CCA485;
+    --honour-bege:      #9c8270;
+    --honour-pessego:   #f6d9b0;
+
+    --primary: (var(--honour-rosa));
+    --secondary: (var(--honour-bege));
+    --warning: var(--honour-pessego);
+    --light: var(--honour-creme);
+    --dark: var(--honour-marrom);
+}
+
+.content-wrapper {
+    background-color: var(--honour-creme);
+}
+
+.sidebar-dark-primary .main-sidebar,
+.sidebar-dark-primary .main-sidebar:before {
+    background-color: var(--honour-marrom) !important;
+}
+
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active {
+    background-color: var(--honour-rosa) !important;
+    color: var(--honour-marrom) !important;
+    font-weight: bold;
+}
+
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link:hover {
+    background-color: rgba(243, 193, 198, 0.15) !important;
+}
+.sidebar-dark-primary .brand-link {
+    border-bottom: 1px solid rgba(243, 193, 198, 0.3) !important;
+}
+
+.sidebar-dark-primary .brand-link {
+    border-bottom: 1px solid rgba(243, 193, 198, 0.3) !important;
+}
+
+.sidebar-dark-primary .brand-text {
+    color: var(--honour-rosa) !important;
+    font-weight: bold;
+}
+
+.navbar-primary {
+    background-color: var(--honour-marrom) !important;
+}
+.main-header.navbar {
+    border-bottom: 3px solid var(--honour-rosa) !important;
+}
+
+.btn-primary,
+.btn-rosa {
+    background-color: var(--honour-rosa) !important;
+    border-color: var(--honour-rosa) !important;
+    color: var(--honour-marrom) !important;
+    font-weight: bold;
+}
+
+.btn-primary:hover,
+.btn-rosa:hover {
+    background-color: var(--honour-rosa-hover) !important;
+    border-color: var(--honour-ros-hover) !important;
+}
+
+.btn-warning {
+    background-color: var(--honour-pessego) !important;
+    border-color: var(--honour-pessego) !important;
+    color: var(--honour-marrom) !important;
+}
+
+.card-custom-rosa,
+.card-outline.card-warning,
+.card-outline.card-primary {
+    border-top: 3px solid var(--honour-rosa) !important;
+}
+
+.pagination .page-link {
+    color: var(--honour-marrom) !important;
+    border-color: var(--honour-rosa) !important;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--honour-rosa) !important;
+    border-color: var(--honour-rosa) !important;
+    color: var(--honour-marrom) !important;
+}
+
+.pagination .page-link:hover {
+    background-color: #fbeef0 !important;
+}
+
+.form-control:focus {
+    border-color: var(--honour-rosa) !important;
+    box-shadow: 0 0 0 0.2rem rgba(243, 193, 198, 0.4) !important;
+}
+.input-group-text {
+    background-color: #fbeef0 !important;
+    color: var(--honour-marrom) !important;
+}
+
+.a:not(.btn) {
+    color: var(--honour-marrom);
+}
+.a:not(.btn):hover {
+    color: var(--honour-rosa-hover);
+}
